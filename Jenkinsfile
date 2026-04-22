@@ -1,11 +1,17 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs 'node20'
+    }
+
     stages {
         stage('Checkout Info') {
             steps {
                 sh 'pwd'
                 sh 'ls -la'
+                sh 'node -v'
+                sh 'npm -v'
             }
         }
 
