@@ -5,6 +5,10 @@ pipeline {
         nodejs 'node20'
     }
 
+    environment {
+        PATH+DOCKER = "/opt/homebrew/bin"
+    }
+
     stages {
         stage('Checkout Info') {
             steps {
@@ -41,6 +45,7 @@ pipeline {
 
         stage('Docker Check') {
             steps {
+                sh 'which docker'
                 sh 'docker version'
             }
         }
