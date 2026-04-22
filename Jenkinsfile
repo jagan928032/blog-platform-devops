@@ -38,5 +38,23 @@ pipeline {
                 }
             }
         }
+
+        stage('Docker Check') {
+            steps {
+                sh 'docker version'
+            }
+        }
+
+        stage('Build Backend Image') {
+            steps {
+                sh 'docker build -t blog-platform-backend:latest ./backend'
+            }
+        }
+
+        stage('Build Frontend Image') {
+            steps {
+                sh 'docker build --build-arg VITE_API_URL=http://localhost:5001/api -t blog-platform-frontend:latest ./frontend'
+            }
+        }
     }
 }
