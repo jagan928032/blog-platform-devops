@@ -41,8 +41,9 @@ pipeline {
 
         stage('Docker Check') {
             steps {
-                withEnv(["PATH=/opt/homebrew/bin:${env.PATH}"]) {
+                withEnv(["PATH=/opt/homebrew/bin:/usr/local/bin:${env.PATH}"]) {
                     sh 'which docker'
+                    sh 'which docker-credential-desktop'
                     sh 'docker version'
                 }
             }
@@ -50,7 +51,7 @@ pipeline {
 
         stage('Build Backend Image') {
             steps {
-                withEnv(["PATH=/opt/homebrew/bin:${env.PATH}"]) {
+                withEnv(["PATH=/opt/homebrew/bin:/usr/local/bin:${env.PATH}"]) {
                     sh 'docker build -t blog-platform-backend:latest ./backend'
                 }
             }
@@ -58,7 +59,7 @@ pipeline {
 
         stage('Build Frontend Image') {
             steps {
-                withEnv(["PATH=/opt/homebrew/bin:${env.PATH}"]) {
+                withEnv(["PATH=/opt/homebrew/bin:/usr/local/bin:${env.PATH}"]) {
                     sh 'docker build --build-arg VITE_API_URL=http://localhost:5001/api -t blog-platform-frontend:latest ./frontend'
                 }
             }
