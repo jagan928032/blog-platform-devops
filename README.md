@@ -133,3 +133,10 @@ CLIENT_URL=http://localhost:5173
 - `GET /api/admin/users`
 - `DELETE /api/admin/users/:id`
 - `DELETE /api/admin/posts/:id`
+### Admin
+
+- `GET /api/admin/users`
+- `DELETE /api/admin/users/:id`
+- `DELETE /api/admin/posts/:id`
+
+
