@@ -140,3 +140,4 @@ CLIENT_URL=http://localhost:5173
 - `DELETE /api/admin/posts/:id`
 
 
+Jenkins demo trigger
